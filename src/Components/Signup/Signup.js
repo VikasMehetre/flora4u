@@ -8,11 +8,13 @@ import SignUpLoading from "../Loading/SignUpLoading";
 
 export default function Signup() {
   const history = useHistory();
+  let [region, setRegion] = useState("");
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [phone, setPhone] = useState("");
   let [password, setPassword] = useState("");
   let [loading,setLoading]=useState(false)
+  
   const handleSubmit = (e) => {
     setLoading(true)
     e.preventDefault();
@@ -24,6 +26,7 @@ export default function Signup() {
             id: result.user.uid,
             name: name,
             phone: phone,
+            region: region,
           });
         });
       })
@@ -56,6 +59,23 @@ export default function Signup() {
             name="email"
           />
           <br />
+          <label>Category:</label>
+        <select
+          name="Category"
+          onChange={(e) => {
+            setRegion(e.target.value);
+          }}
+          className="input"
+        > <option >Select Region</option>
+              <option value="Andheri">Andheri</option>
+              <option value="Malad">Malad</option>
+              <option value="Goregaon">Goregaon</option>
+              <option value="Kurla">Kurla</option>
+              <option value="Vashi">Vashi</option>
+              <option value="Panvel">Panvel</option>
+              <option value="Other">Other</option>
+        </select>
+        <br/>
           <label>Phone</label>
           <br />
           <input
@@ -84,4 +104,5 @@ export default function Signup() {
     </div> 
     </>
   );
+
 }

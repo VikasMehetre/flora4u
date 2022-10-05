@@ -11,6 +11,8 @@ import SellButtonPlus from "../../assets/SellButtonPlus";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contextStore/AuthContext";
 import { Firebase } from "../../firebase/config";
+
+// import { Reg } from "../Banner/Banner";
 import Search from "../Search/Search";
 function Header() {
   const{allPost}=useContext(AllPostContext)
@@ -86,8 +88,9 @@ function Header() {
         </div>
         
         <div className="language">
-          <span> ENGLISH </span>
-          <Arrow></Arrow>
+         
+          {/* change */}
+          {/* <Arrow></Arrow> */}
         </div>
         <div className="loginPage">
           {user ? (

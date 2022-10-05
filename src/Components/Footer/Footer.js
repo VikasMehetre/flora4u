@@ -46,7 +46,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer">
-        <p>Other Countries Sigapore - Nepal -Bhutan</p>
+        <p>Other Countries Myanmar - Nepal -Bhutan</p>
         <p>Free Classifieds in India. © 2006-2021 Flora4u</p>
       </div>
     </div>

@@ -46,6 +46,7 @@ function View() {
             <p className="p-bold">Seller details</p>
             <p>Name : {userDetails.name}</p>
             <p>Phone : {userDetails.phone}</p>
+            <p>Region : {userDetails.region}</p>
           </div>
         }
        

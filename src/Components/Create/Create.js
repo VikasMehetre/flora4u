@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState, useContext,useEffect } from "react";
 import "./Create.css";
 import Header from "../Header/Header";
 import { Firebase } from "../../firebase/config";
@@ -14,9 +14,54 @@ const Create = () => {
   let [description, setDescription] = useState("");
   let [image, setImage] = useState();
   let [loading,setLoading]=useState(false);
+
+  const [userDetails, setUserDetails] = useState();
+  const [adminDetails, setAdminDetails] = useState();
+  const [adminDetails1, setAdminDetails1] = useState();
+
+  useEffect(() => {
+    let  userId  = (user.uid);
+ 
+    
+      console.log(user.uid)
+  
+      // console.log(user)
+      Firebase.firestore()
+        .collection("users")
+        .where("id", "==", userId)
+        .get()
+        .then((res) => {
+          res.forEach((doc) => {
+            setUserDetails(doc.data());
+            // console.log(userDetails.region)
+          });
+        });
+       
+    
+  });
+
   const handleSubmit = () => {
+
+    // Firebase.firestore()
+    //     .collection("Admin")
+    //     .where("id", "==","xUxDL4u9fQMQ4MSI0eI2uQWW0vw2")
+    //     .get()
+    //     .then((res) => {
+    //       res.forEach((doc) => {
+    //         setAdminDetails(doc.data());
+    //         console.log(adminDetails)
+    //         setAdminDetails1(adminDetails.Profit+adminDetails.Price)
+            
+    //       });
+    //     })
+    //    ; 
+ 
+
+
     setLoading(true);
     let date = new Date().toDateString();
+    // let { userId } = user.uid;
+
     Firebase.storage()
       .ref(`/image/${image.name}`)
       .put(image)
@@ -32,6 +77,7 @@ const Create = () => {
               url,
               userId: user.uid,
               createdAt: date,
+              region: userDetails.region,
             })
             .then(() => {
               history.push("/");
@@ -114,12 +160,15 @@ const Create = () => {
           }}
         />
         <br />
+        <div className="charge">Charge Rs 20</div>
         <button className="uploadBtn" onClick={handleSubmit}>
           upload and Submit
         </button>
       </div> 
     </Fragment>
+
   );
 };
 
 export default Create;
+// dropdown - region 

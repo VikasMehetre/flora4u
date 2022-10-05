@@ -42,3 +42,9 @@
   cursor: pointer;
   
 }
+
+.region{
+  position: relative;
+    left: 397px;
+    font-weight: bold;
+}

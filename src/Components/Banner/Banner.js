@@ -3,8 +3,14 @@ import DynamicPosts from "../DynamicPosts/DynamicPosts";
 
 import "./Banner.css";
 
+  // let Reg=(regio)=>{
+  //   let [region,setRegion]=useState();
+  //   setRegion(regio)
+  // }
 function Banner() {
+  
   let [category, setCategory] = useState();
+  let [region,setRegion]=useState();
   
   return (
     <div className="bannerParentDiv">
@@ -37,15 +43,35 @@ function Banner() {
             <span onClick={()=>setCategory("Caladium")} >Caladium</span>
             <span onClick={()=>setCategory("Other")} >Other</span>
           </div>
+          <span className= "region">   
+             <label>Region:</label>
+        <select
+          name="Category"
+          onChange={(e) => {
+            setRegion(e.target.value);
+          }}
+          className="input"
+        > <option >Select Region</option>
+              <option value="Andheri">Andheri</option>
+              <option value="Malad">Malad</option>
+              <option value="Goregaon">Goregaon</option>
+              <option value="Kurla">Kurla</option>
+              <option value="Vashi">Vashi</option>
+              <option value="Panvel">Panvel</option>
+              <option value="Other">Other</option>
+        </select>
+         </span>
         </div>
         <div className="banner">
           {/* <img src="../../../Images/banner copy.png" alt="" /> */}
           <img src="../../../Images/By And sell plants.png" alt="" />
         </div>
       </div>
-     { category!=null && <DynamicPosts category={category}/>  }
+     { category!=null && <DynamicPosts category={category} region={region}/>  }
     </div>
   );
 }
 
+
 export default Banner;
+// export {Reg}
