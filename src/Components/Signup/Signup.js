@@ -73,7 +73,7 @@ export default function Signup() {
               <option value="Kurla">Kurla</option>
               <option value="Vashi">Vashi</option>
               <option value="Panvel">Panvel</option>
-              <option value="Other">Other</option>
+             
         </select>
         <br/>
           <label>Phone</label>
